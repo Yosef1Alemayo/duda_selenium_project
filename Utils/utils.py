@@ -10,6 +10,7 @@ class Utils:
     def __init__(self, driver):
         self.driver = driver
 
+    @allure.step
     def validation(self, expected, actual):
         driver = self.driver
         try:
@@ -18,6 +19,7 @@ class Utils:
             allure.attach(driver.save_screenshot('..//Reports/ScreenShot.png'), attachment_type=AttachmentType.PNG)
             raise AssertionError
 
+    @allure.step
     def register_incorrectly_all_combinations(self, values: list):
         driver = self.driver
         register = Register_Page(driver)

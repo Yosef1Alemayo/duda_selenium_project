@@ -1,4 +1,5 @@
 import pytest
+import Utils
 from Utils.utils import Utils
 from Base.base import Base
 from selenium.webdriver.common.by import By
@@ -14,7 +15,7 @@ class Test_Register(Base):
         validation = Utils(driver)
         register = Register_Page(driver)
         register.register_page()
-        register.register_fields(['Avi', 'Yakov', 'AviYakov12', '147852963', '147852963'])
+        register.register_fields(['Rami', 'Mahari', 'RM12', '147852963', '147852963'])
         register.click_sign_up()
         WebDriverWait(driver, 20).until(EC.url_to_be('http://localhost:3000/signin'))
         validation.validation(driver.current_url, 'http://localhost:3000/signin')
@@ -59,11 +60,5 @@ class Test_Register(Base):
         validation.validation(register.user_name_message(), 'Username is required')
         validation.validation(register.password_message(), 'Enter your password')
 
-    def test_navigate_to_login_link(self):
-        driver = self.driver
-        register = Register_Page(driver)
-        register.register_page()
-        register.click_login_link()
-        register.click_login_link()
-        WebDriverWait(driver, 20).until(EC.url_to_be('http://localhost:3000/signin'))
+
 
